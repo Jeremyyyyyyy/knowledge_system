@@ -1,5 +1,6 @@
 package com.jeremy.wiki.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,7 @@ import org.springframework.core.env.Environment;
 // @ComponentScan({"com.jeremy"},{"com.test")  扫描多个包
 @ComponentScan("com.jeremy") //默认扫描子包 扫描其他包要手动添加
 @SpringBootApplication
+@MapperScan("com.jeremy.wiki.mapper")
 public class WikiApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
