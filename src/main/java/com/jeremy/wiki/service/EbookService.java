@@ -7,6 +7,7 @@ import com.jeremy.wiki.req.EbookReq;
 import com.jeremy.wiki.resp.EbookResp;
 import com.jeremy.wiki.util.CopyUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -21,7 +22,11 @@ public class EbookService {
         EbookExample ebookExample = new EbookExample();
         // 内部类
         EbookExample.Criteria criteria = ebookExample.createCriteria();
-        criteria.andNameLike( "%" + req.getName() + "%");
+
+        //动态sql
+        if(!ObjectUtils.isEmpty(req.getName())) {
+            criteria.andNameLike("%" + req.getName() + "%");
+        }
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 //        List<EbookResp> respList = new ArrayList<>();
 //        for (Ebook ebook : ebookList) {
