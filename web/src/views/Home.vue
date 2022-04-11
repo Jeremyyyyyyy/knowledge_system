@@ -94,8 +94,8 @@
             const ebooks = ref();
             const ebooks1 = reactive({books: []});
             onMounted(() => {
-                console.log("onMounted")
-                axios.get(process.env.VUE_APP_SERVER + "/ebook/list").then((response) => {
+                console.log("onMounted22")
+                axios.get("/ebook/list").then((response) => {
                     const data = response.data;
                     ebooks.value = data.content;
                     ebooks1.books = data.content;
