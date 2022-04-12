@@ -50,6 +50,24 @@
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.51</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -76,6 +94,7 @@
                         <artifactId>mysql-connector-java</artifactId>
                         <version>8.0.20</version>
                     </dependency>
+
                 </dependencies>
             </plugin>
 
@@ -83,3 +102,5 @@
     </build>
 
 </project>
+
+
