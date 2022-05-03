@@ -1,11 +1,15 @@
 package com.jeremy.wiki.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jeremy.wiki.domain.Ebook;
 import com.jeremy.wiki.domain.EbookExample;
 import com.jeremy.wiki.mapper.EbookMapper;
 import com.jeremy.wiki.req.EbookReq;
 import com.jeremy.wiki.resp.EbookResp;
 import com.jeremy.wiki.util.CopyUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -14,6 +18,8 @@ import java.util.List;
 
 @Service
 public class EbookService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(EbookService.class);
 
     @Resource
     private EbookMapper ebookMapper;
@@ -27,7 +33,13 @@ public class EbookService {
         if(!ObjectUtils.isEmpty(req.getName())) {
             criteria.andNameLike("%" + req.getName() + "%");
         }
+        PageHelper.startPage(1,3);
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
+
+        PageInfo<Ebook> PageInfo = new PageInfo<>(ebookList);
+        LOG.info("总行数：{}", PageInfo.getTotal());
+        LOG.info("总页数：{}", PageInfo.getPages());
+
 //        List<EbookResp> respList = new ArrayList<>();
 //        for (Ebook ebook : ebookList) {
 ////            EbookResp ebookResp = new EbookResp();
